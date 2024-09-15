@@ -1,9 +1,13 @@
-def fuel_needed(distance: int, mpg: int) -> float:
-    return distance / mpg
+def get_weather_report() -> str:
+    """Docstring"""
+    weather: str = input("What is the weather?")
+    if (weather == "rainy") or (weather == "cold"):
+        print("Bring a jacket!")
+    elif weather == "hot":
+        print("Keep cool out there!")
+    else:
+        print("I don't recognize this weather.")
+    return weather
 
 
-def total_fuel_cost(distance: int, mpg: int, price_per_gallon: int) -> float:
-    return fuel_needed(distance=distance, mpg=mpg) * price_per_gallon
-
-
-print(total_fuel_cost(distance=300, mpg=25, price_per_gallon=4))
+get_weather_report()
