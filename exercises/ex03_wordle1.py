@@ -1,4 +1,4 @@
-"""Exercise Three - Wordle Game -- TEST"""
+"""Exercise Three - Wordle Game"""
 
 __author__ = "730671459"
 
@@ -30,22 +30,18 @@ def emojified(secret_word1: str, guessed_word: str) -> str:
     GREEN_BOX: str = "\U0001F7E9"
     YELLOW_BOX: str = "\U0001F7E8"
     index = 0
-    emoji: list[str] = []
+    emoji: str = ""
     while index < len(secret_word1):
         if guessed_word[index] == secret_word1[index]:  # If characters match
             emoji += GREEN_BOX
-        elif (
-            (contains_char(secret_word=secret_word1, guessed_char=guessed_word[index]))
-            and (guessed_word[index] != secret_word1[index - 1])
-            and (guessed_word[index] != secret_word1[index - 2])
-            and (guessed_word[index] != secret_word1[index - 3])
-            and (guessed_word[index] != secret_word1[index - 4])
-        ):
+        elif contains_char(
+            secret_word=secret_word1, guessed_char=guessed_word[index]
+        ):  # If character does not match, but is found elsewhere in word.
             emoji += YELLOW_BOX
-        else:
+        else:  # If character is not found in secret word.
             emoji += WHITE_BOX
         index += 1
-    return str(f"{emoji[0]}{emoji[1]}{emoji[2]}{emoji[3]}{emoji[4]}")
+    return emoji
 
 
 def main(secret_word: str) -> None:
