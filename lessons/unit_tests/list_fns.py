@@ -3,6 +3,8 @@
 
 def get_first(input: list[str]) -> str:
     """Return first element."""
+    if len(input) == 0:
+        return ""
     return input[0]
 
 

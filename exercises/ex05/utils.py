@@ -28,3 +28,17 @@ def sub(full_list: list[int], num1: int, num2: int) -> list[int]:
         subset.append(full_list[index])
         index += 1
     return subset
+
+
+def add_at_index(input: list[int], element: int, idx: int) -> None:
+    """Given a list, adds an integer at a particular index."""
+    if idx < 0 or idx > len(input):
+        raise IndexError("Index is out of bounds for the input list")
+    input.append(0)  # Increases the length of the list to fit the new item.
+    index = (
+        len(input) - 1
+    )  # Starts from the end of the list so items before idx remain unchanged.
+    while index > idx:  # Moves each item after idx one place to the right
+        input[index] = input[index - 1]
+        index -= 1
+    input[idx] = element  # Adds element at idx
